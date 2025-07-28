@@ -1,10 +1,21 @@
-# Radar Sea Clutter Classification
+# Maritime Radar Dataset Generator & Sea Clutter Classifier
 
-A comprehensive Python toolkit for radar-based sea clutter classification using the IPIX and CSIR datasets. This project implements a complete pipeline for processing I/Q radar data, extracting features, and training classifiers to distinguish between sea clutter and small boat targets.
+A comprehensive Python toolkit for generating large-scale maritime radar datasets and performing radar-based sea clutter classification. This project implements both synthetic dataset generation with physically-based models and complete machine learning pipelines for distinguishing between sea clutter and vessel targets.
+
+## 🆕 NEW: Maritime Radar Dataset Generator
+
+Generate massive, realistic maritime radar datasets with labeled tracks:
+
+- **Physical Models**: K-distribution and Weibull sea clutter models
+- **Realistic Targets**: Vessel motion patterns with multiple ship types
+- **Large Scale**: Generate 1GB+ datasets with millions of detections
+- **Track Data**: Sequential detections forming continuous tracks
+- **ML Ready**: Automatic train/validation/test splits and feature preparation
 
 ## Features
 
 ### 🎯 Core Capabilities
+- **Dataset Generation**: Create large-scale synthetic maritime radar datasets
 - **Data Loading**: Support for IPIX and CSIR radar datasets with synthetic data generation
 - **Signal Processing**: Complete I/Q signal processing pipeline with windowing and FFT
 - **Feature Extraction**: 80+ spectral, temporal, and image-based features
@@ -66,7 +77,16 @@ The project requires the following main packages:
 
 ## Quick Start
 
-### 1. Run Example Usage
+### 1. Generate Maritime Radar Dataset
+```bash
+# Quick demo dataset
+python3 test_dataset_generation.py
+
+# Large-scale dataset (requires dependencies)
+python generate_maritime_dataset.py --size 2.0 --analyze --export_ml
+```
+
+### 2. Run Example Usage
 ```bash
 python example_usage.py
 ```
@@ -219,8 +239,35 @@ Options:
 
 ## Datasets
 
-### Synthetic Data
-The system generates realistic synthetic radar data for demonstration:
+### 🌊 Maritime Radar Dataset (NEW)
+Generate large-scale realistic maritime radar datasets with:
+
+**Dataset Specifications:**
+- **Fields**: TrackID, Range, Azimuth, Elevation, Doppler, RCS, SNR, Timestamp, Labels
+- **Size**: 1GB+ (configurable, millions of detections)
+- **Tracks**: Sequential detections (50-500 points per track)
+- **Targets**: Vessels (small boats, fishing vessels, cargo ships, patrol boats)
+- **Clutter**: Physically-based sea clutter (K-distribution, Weibull models)
+- **Conditions**: Multiple sea states (calm to very rough)
+
+**Quick Generation:**
+```bash
+# Simple test (no dependencies required)
+python3 test_dataset_generation.py
+
+# Large dataset with full features
+python generate_maritime_dataset.py --size 2.0 --analyze --export_ml --output_dir my_dataset
+```
+
+**Output Files:**
+- `maritime_radar_dataset.h5` - Main dataset (HDF5 format)
+- `maritime_radar_dataset.parquet` - Compressed version
+- `maritime_radar_train/val/test.h5` - ML-ready splits
+- `dataset_overview.html` - Interactive analysis dashboard
+- `metadata.json` - Complete dataset documentation
+
+### Synthetic Data (Original)
+The original system generates realistic synthetic radar data for demonstration:
 - 20 range cells (15 clutter, 5 targets)
 - 8192 time samples per cell
 - Configurable sea states and target characteristics

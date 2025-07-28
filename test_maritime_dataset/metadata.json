@@ -1,0 +1,15 @@
+{
+  "dataset_info": {
+    "name": "Test Maritime Radar Dataset",
+    "version": "1.0",
+    "generated_at": "2025-07-28T18:44:35.032722Z",
+    "description": "Simple test dataset for maritime radar detection"
+  },
+  "statistics": {
+    "total_detections": 586166,
+    "clutter_tracks": 100,
+    "vessel_tracks": 20,
+    "target_detections": 576631,
+    "clutter_detections": 9535
+  }
+}
